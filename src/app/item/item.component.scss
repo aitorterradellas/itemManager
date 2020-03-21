@@ -13,20 +13,40 @@
   }
 }
 
-mat-icon {
-  margin-left: 2px;
-  margin-top: -5px;
+.title {
 
-  color: #a0a0a0;
+  h1, .button {
+    display: block;
+  }
 
-  &.selected {
+  h1 {
+    float: left;
+    font-size: 100%;
+    width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+  }
+
+  .button {
+    float: right;
+    text-align: right;
+    width: 30%;
+  }
+
+  mat-icon {
+    margin-left: 2px;
+    margin-top: -5px;
+    color: #a0a0a0;
+
+    &.selected {
       color: #ff006e;
+    }
   }
 }
 
-button {
-  float: right;
-}
+
 
 .my-item {
   img {
@@ -34,6 +54,10 @@ button {
 
     &.header {
       display: none;
+      width: 100px;
+      height: 100px;
+      margin: auto;
+      margin-bottom: 10px;
     }
 
     @media (max-width: 599px) {
@@ -47,9 +71,6 @@ button {
 
       &.header {
         display: block;
-        width: 100px;
-        height: 100px;
-        margin: auto;
 
         &.reduced {
           display: none;

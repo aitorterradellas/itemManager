@@ -2,14 +2,19 @@
   <img class="avatar" matListAvatar [ngClass]="{'reduced': isReduced}" src="{{item.image}}" />
   <img class="header" matLine [ngClass]="{'reduced': isReduced}" src="{{item.image}}" />
 
-  <h1 matLine>
-    <b>{{item.title}}</b>
-    <button (click)="toggle()" mat-button>
-      <mat-icon [ngClass]="{'selected': isSelected()}">
-        {{isReduced ? 'clear' : 'favorite'}}
-      </mat-icon>
-    </button>
-  </h1>
+  <div matLine class="title">
+    <h1>
+      <b>{{item.title}}</b>
+    </h1>
+    <div class="button">
+      <button (click)="toggle()" mat-button>
+        <mat-icon [ngClass]="{'selected': isSelected()}">
+          {{isReduced ? 'clear' : 'favorite'}}
+        </mat-icon>
+      </button>
+    </div>
+  </div>
+  
 
   <div matLine *ngIf="!isReduced">
     <div matLine>{{item.description}}</div>
