@@ -1,0 +1,48 @@
+<mat-toolbar class="header">
+  <mat-toolbar-row>
+    <span>Item Manager</span>
+    <button mat-button (click)="toggleSearch()" class="toggle-search">
+      <mat-icon>{{searchVisible ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}}</mat-icon>
+    </button>
+    <button mat-button (click)="openModal()" class="open-modal">
+      <span class="fav-title">Favourites</span>
+      <mat-icon class="selected">favorite</mat-icon>
+    </button>
+  </mat-toolbar-row>
+  <mat-toolbar-row class="search" *ngIf="searchVisible">
+    <mat-form-field>
+      <input matInput placeholder="{{titles.TITLE}}" [(ngModel)]="searchForm.fields[names.TITLE]">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="{{titles.DESCRIPTION}}" [(ngModel)]="searchForm.fields[names.DESCRIPTION]">
+    </mat-form-field>
+  </mat-toolbar-row>
+  <mat-toolbar-row class="search" *ngIf="searchVisible">
+    <mat-form-field>
+      <input type="number" matInput placeholder="{{titles.PRICE}}" [(ngModel)]="searchForm.fields[names.PRICE]">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="{{titles.EMAIL}}" [(ngModel)]="searchForm.fields[names.EMAIL]">
+    </mat-form-field>
+
+  </mat-toolbar-row>
+  <mat-toolbar-row class="search" *ngIf="searchVisible">
+    <mat-form-field>
+      <mat-select [(ngModel)]="sortField" placeholder="Sort by">
+        <mat-option matInput *ngFor="let option of options" (click)="sort()" value="{{option.name}}">
+          {{option.title}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-button (click)="search()">
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-list>
+  <app-item [item]="item" *ngFor="let item of items"></app-item>
+</mat-list>
+<button mat-button (click)="loadMore()" class="load" *ngIf="canLoad()">
+  <mat-icon>keyboard_arrow_down</mat-icon>
+</button>

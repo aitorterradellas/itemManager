@@ -1,0 +1,10 @@
+<mat-toolbar>
+  <span>Favourites</span>
+  <mat-form-field class="search">
+    <input matInput placeholder="{{titles.TITLE}}" [(ngModel)]="searchForm.fields[names.TITLE]" (change)="search()">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+</mat-toolbar>
+<mat-list>
+  <app-item [item]="item" [isReduced]="true" *ngFor="let item of items"></app-item>
+</mat-list>

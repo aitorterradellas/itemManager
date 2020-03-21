@@ -1,0 +1,64 @@
+::ng-deep .mat-list .mat-list-item .mat-line {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.mat-list-avatar {
+  width: 100px !important;
+  height: 100px !important;
+
+  &.reduced {
+      width: 40px !important;
+      height: 40px !important;
+  }
+}
+
+mat-icon {
+  margin-left: 2px;
+  margin-top: -5px;
+
+  color: #a0a0a0;
+
+  &.selected {
+      color: #ff006e;
+  }
+}
+
+button {
+  float: right;
+}
+
+.my-item {
+  img {
+    border-radius: 50%;
+
+    &.header {
+      display: none;
+    }
+
+    @media (max-width: 599px) {
+      &.avatar {
+        display: none;
+
+        &.reduced {
+          display: block;
+        }
+      }
+
+      &.header {
+        display: block;
+        width: 100px;
+        height: 100px;
+        margin: auto;
+
+        &.reduced {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+
+
+

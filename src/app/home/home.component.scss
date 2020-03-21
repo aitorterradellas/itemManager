@@ -1,0 +1,58 @@
+.header {
+  .search {
+    font-size: 70%;
+
+    mat-form-field {
+      margin-right: 5px;
+      width: 100%;
+    }
+
+    button {
+      width: 100%;
+      background-color: #0094ff;
+      color: white;
+    }
+  }
+
+  .fav-title {
+    margin-right: 5px;
+  }
+
+  @media (max-width: 599px) {
+    mat-toolbar-row {
+      display: block;
+      height: auto;
+    }
+
+    mat-form-field {
+      display: block;
+    }
+
+    .fav-title {
+      display: none;
+    }
+  }
+}
+
+
+
+.open-modal {
+  position: absolute;
+  right: 1%;
+}
+
+.load {
+  background-color: #0094ff;
+  color: white;
+  width: 100%;
+}
+
+mat-icon {
+  &.selected {
+    color: #ff006e;
+  }
+}
+
+.open-modal {
+  margin-left: 5px;
+}
