@@ -20,7 +20,7 @@ export class SearchForm {
   }
 
   passesFilter(item: Item): boolean {
-    if (this.isReduced && this.isEmpty()) {
+    if (this.isEmpty()) {
       return true;
     }
 

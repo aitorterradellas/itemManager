@@ -56,3 +56,23 @@ mat-icon {
 .open-modal {
   margin-left: 5px;
 }
+
+.paginator {
+  margin: auto;
+  text-align: center;
+  margin: 10px;
+
+  button {
+    background-color: #0094ff;
+    color: white;
+
+    &.disabled {
+      background-color: #a0a0a0;
+    }
+  }
+
+  .page {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}

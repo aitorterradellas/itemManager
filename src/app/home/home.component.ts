@@ -36,27 +36,49 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.searchForm = new SearchForm();
     this.pagination.page = 0;
+    this.pagination.total = 0;
     this.pagination.size = PAGE_SIZE;
+    this.getItems();
   }
 
-  loadMore() {
+  isFirst(): boolean {
+    return this.pagination.isFirst();
+  }
+
+  isLast(): boolean {
+    return this.pagination.isLast();
+  }
+
+  next() {
     this.pagination.page++;
+    this.getItems();
+  }
+
+  prev() {
+    this.pagination.page--;
+    this.getItems();
+  }
+
+  getItems() {
     this.serviceSubscription = this.dataService.getItems().subscribe((data) => {
+      //console.log("data", data);
       const newItems = this.listService.filter(this.searchForm, this.sortField, this.pagination, data.items);
-      this.items = this.items.concat(newItems);
+      this.items = newItems;
     });
   }
 
-  canLoad() {
-    return (this.items.length) && (this.items.length != this.pagination.total);
+  getPage(): number {
+    return this.pagination.page + 1;
+  }
+
+  getTotalPages(): number {
+    return this.pagination.getTotalPages();
   }
 
   sort() {
-    if (!this.items.length) {
-      this.search();
-    } else {
-      this.items = this.listService.sort(this.sortField, this.items);
-    }
+    this.serviceSubscription = this.dataService.getItems().subscribe((data) => {
+      this.items = this.listService.filter(this.searchForm, this.sortField, this.pagination, data.items);
+    });
   }
 
   search() {

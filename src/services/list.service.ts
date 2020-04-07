@@ -18,7 +18,8 @@ export class ListService {
 
     if (pagination) pagination.total = res.length;
 
-    return this.paginate(pagination, sortField, res);
+    //return this.paginate(pagination, sortField, res);
+    return this.sort(pagination, sortField, res);
   }
 
   private compareField(a: Item, b: Item, field: string): number {
@@ -27,20 +28,20 @@ export class ListService {
     return 0;
   }
 
-  sort(field: string, data: Item[]): Item[] {
+  sort(pagination: Pagination, field: string, data: Item[]): Item[] {
     if (field) {
-      return data.sort((a, b) => this.compareField(a, b, field));
+      return this.paginate(pagination, data.sort((a, b) => this.compareField(a, b, field)));
+    }
+
+    return this.paginate(pagination, data);
+  }
+
+  private paginate(pagination: Pagination = null, data: Item[]): Item[] {
+    if (pagination) {
+      return data.splice(pagination.page * pagination.size, pagination.size);
     }
 
     return data;
-  }
-
-  private paginate(pagination: Pagination = null, sortField: string, data: Item[]): Item[] {
-    if (pagination) {
-      return this.sort(sortField, data.splice(pagination.page * pagination.size, pagination.size));
-    }
-
-    return this.sort(sortField, data);
   }
 
 

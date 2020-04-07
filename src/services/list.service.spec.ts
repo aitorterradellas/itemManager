@@ -23,6 +23,6 @@ describe('ListService', () => {
 
   it('should return sort() value correctly', () => {
     const data = [];
-    expect(service.sort("", data).length).toEqual(data.length);
+    expect(service.sort(new Pagination(), "", data).length).toEqual(data.length);
   });
 });

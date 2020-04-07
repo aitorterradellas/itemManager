@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { FavouriteService } from './favourite.service';
 import { Item } from '../entities/item';
 
-fdescribe('FavouriteService', () => {
+describe('FavouriteService', () => {
   let service: FavouriteService;
 
   beforeEach(() => {

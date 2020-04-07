@@ -40,9 +40,11 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
+<div class="paginator">
+  <button mat-button [ngClass]="{'disabled': isFirst()}" [disabled]="isFirst()" (click)="prev()"><mat-icon>keyboard_arrow_left</mat-icon></button>
+  <span class="page"><b>Page {{getPage()}} of {{getTotalPages()}}</b></span>
+  <button mat-button [ngClass]="{'disabled': isLast()}" [disabled]="isLast()" (click)="next()"><mat-icon>keyboard_arrow_right</mat-icon></button>
+</div>
 <mat-list>
   <app-item [item]="item" *ngFor="let item of items"></app-item>
 </mat-list>
-<button mat-button (click)="loadMore()" class="load" *ngIf="canLoad()">
-  <mat-icon>keyboard_arrow_down</mat-icon>
-</button>

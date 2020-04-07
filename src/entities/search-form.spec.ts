@@ -18,8 +18,6 @@ describe('SearchForm', () => {
 
   it('should return passesFilter() value correctly', () => {
     const item = new Item();
-    expect(searchForm.passesFilter(item)).toBeFalsy();
-    searchForm.isReduced = true;
     expect(searchForm.passesFilter(item)).toBeTruthy();
   });
 });
